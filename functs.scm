@@ -690,12 +690,10 @@
 (define (lst . xs)
   (apply
     append
-    (map
-      (lambda (x)
-         (if (list? x)
-             x
-           (list x)))
-      xs)))
+    (map (lambda (x)
+           (if (list? x)
+               x
+             (list x))) xs)))
 
 (define (vector-append . xs)
   (list->vector (apply append (map vector->list xs))))
