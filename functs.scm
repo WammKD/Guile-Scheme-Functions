@@ -14,7 +14,7 @@
 ;;;
 ;;; You should have received a copy of the GNU Lesser General Public
 ;;; License along with this library; if not, write to the Free Software
-;;; Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+;;; Foundation, Inc., 51 Franklin Str, Fifth Floor, Boston, MA 02110-1301 USA
 
 (define-module (jaft functs)
   #:use-module (srfi srfi-1)
@@ -191,13 +191,13 @@
 (define -- 1-)
 
 (define (number? . xs)
-  (every (lambda (y) (number?T y)) xs))
+  (every number?T xs))
 
 (define (string? . xs)
-  (every (lambda (y) (string?T y)) xs))
+  (every string?T xs))
 
 (define (char? . xs)
-  (every (lambda (y) (char?T y)) xs))
+  (every char?T xs))
 
 ;; (define (== . xs)
 ;;   (apply (if (apply number? xs) = equal?) xs))
@@ -249,7 +249,7 @@
   (every (lambda (x) (eq? x #f)) xs))
 
 (define (zero? . xs)
-  (every (lambda (y) (zero?T y)) xs))
+  (every zero?T xs))
 
 ;; (define (list-and . xs)
 ;;   (cond
