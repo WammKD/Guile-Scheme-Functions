@@ -99,7 +99,7 @@
              filt))
 
 (import (prefix (rnrs base) base:))
-(import (prefix (rnrs lists) lists:))
+;; (import (prefix (rnrs lists) lists:))
 (base:define +T base:+)
 (base:define -T base:-)
 (base:define *T base:*)
