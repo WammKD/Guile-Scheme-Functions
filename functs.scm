@@ -17,11 +17,11 @@
 ;;; Foundation, Inc., 51 Franklin Str, Fifth Floor, Boston, MA 02110-1301 USA
 
 (define-module (jaft functs)
-  #:use-module (srfi srfi-1)
+  #:autoload (srfi srfi-1) (every fold-right member iota)
   ;; #:use-module (srfi srfi-43)
   ;; #:use-module (srfi srfi-60)
-  #:use-module (ice-9 match)
-  #:use-module (ice-9 rdelim)
+  #:autoload (ice-9 match) (match)
+  #:autoload (ice-9 rdelim) (read-line)
   ;; #:use-module (compat racket for)
   #:export (!
 	    %
