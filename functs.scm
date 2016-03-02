@@ -126,27 +126,23 @@
 
 (define (+ . xs)
   ;; (let ([f (if (negative? atom) ceiling floor)])
-  (inexact->exact (apply +T (map (lambda (n) (if (negative? n)
-                                                   (ceiling n)
-                                                 (floor n))) xs))))
+  (inexact->exact (apply +T (map (lambda (n)
+                                   ((if (negative? n) ceiling floor) n)) xs))))
 
 (define (- . xs)
-  (inexact->exact (apply -T (map (lambda (n) (if (negative? n)
-                                                   (ceiling n)
-                                                 (floor n))) xs))))
+  (inexact->exact (apply -T (map (lambda (n)
+                                   ((if (negative? n) ceiling floor) n)) xs))))
 
 (define (* . xs)
-  (inexact->exact (apply *T (map (lambda (n) (if (negative? n)
-                                                   (ceiling n)
-                                                 (floor n))) xs))))
+  (inexact->exact (apply *T (map (lambda (n)
+                                   ((if (negative? n) ceiling floor) n)) xs))))
 
 (define (/ . xs)
-  (let ([m (exact->inexact (apply /T (map (lambda (n) (if (negative? n)
-                                                          (ceiling n)
-                                                        (floor n))) xs)))])
-    (inexact->exact (if (negative? m)
-                        (ceiling m)
-                      (floor m)))))
+  (let ([m (exact->inexact (apply /T (map (lambda (n)
+                                            ((if (negative? n) ceiling floor) n)) xs)))])
+    (inexact->exact ((if (negative? m)
+                         ceiling
+                       floor) m))))
 
 (define % modulo)
 
@@ -295,7 +291,10 @@
   (exact->inexact (apply *T xs)))
 
 (define (div . xs)
-  (apply /T xs))
+  (apply /T (map (lambda (x)
+                   (if (integer? x)
+                       (inexact->exact x)
+                     x)) xs)))
 
 (define (invert n)
   (*T n -1))
