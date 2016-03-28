@@ -17,7 +17,7 @@
 ;;; Foundation, Inc., 51 Franklin Str, Fifth Floor, Boston, MA 02110-1301 USA
 
 (define-module (jaft functs)
-  #:autoload (srfi srfi-1) (every fold-right member iota)
+  #:autoload (srfi srfi-1) (every fold-right member iota count)
   ;; #:use-module (srfi srfi-43)
   ;; #:use-module (srfi srfi-60)
   #:autoload (ice-9 match) (match)
