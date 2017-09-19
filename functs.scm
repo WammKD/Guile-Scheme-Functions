@@ -301,12 +301,12 @@
 
 (define* (.. x y #:optional [z 1])
   (cond
-   [(&& (number?T x) (number?T y))
+   [(and (number?T x) (number?T y))
     (let ([nz (if (> x y) (invert z) z)])
     ;; (if (> x y)
     ;;     (reverse (iota (int (++ (/ (- x y) z))) y z))
       (iota (int (++ (abs (/T (-T y x) z)))) x nz))]
-   [(&& (char? x) (char? y))
+   [(and (char? x) (char? y))
     (let ([cx (char->integer x)] [cy (char->integer y)])
       (map integer->char (map int (.. cx cy z))))]))
 
@@ -480,7 +480,7 @@
    [(boolean?      x)                 (match x [#t "#t"] [#f "#f"])]
    [(symbol?       x)       (string-append "'"  (symbol->string x))]
    [(string?       x)                                             x]
-   [(||
+   [(or
       (list?       x)
       (vector?     x)
       (hash-table? x))
